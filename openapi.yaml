@@ -1,21 +1,22 @@
 openapi: 3.0.3
 info:
-  title: Dokumen API Web Informasi Wisata Bandung Oleh Backend Developer
+  title: Dokumen API GIS Oleh Backend Developer
   description: 
-    Dokumentasi API Informasi Wisata Bandung (IWB)
-  termsOfService: https://github.com/InformasiwisataBandung/swagger
+    Dokumentasi GIS
+  termsOfService: https://github.dev/AkbarHasballah/SwaggerBE
   contact:
     email: salmanakbartafisa@gmail.com 
   license:
     name: GIS chapter 6 Salman
-    url:  https://pkg.go.dev/github.com/InformasiwisataBandung/BackendGO
+    url:  https://pkg.go.dev/github.com/AkbarHasballah/BackEndGis
   version: 1.0.11
 externalDocs:
   description: RepositoRi Google Cloud Function
-  url: github.com/InformasiwisataBandung/BackendGO
+  url: github.com/AkbarHasballah/BackEndGis
 servers:
   - url: https://asia-southeast2-bustling-walker-340203.cloudfunctions.net
   - url: https://us-central1-bustling-walker-340203.cloudfunctions.net/SIgnin
+  - url: https://us-central1-bustling-walker-340203.cloudfunctions.net/function-GIS2
 tags:
   - name: data
     description: Data
