@@ -1,17 +1,16 @@
 openapi: 3.0.3
 info:
   title: Dokumen API GIS Oleh Backend Developer
-  description: 
-    Dokumentasi GIS
+  description: Dokumentasi GIS
   termsOfService: https://github.dev/AkbarHasballah/SwaggerBE
   contact:
     email: salmanakbartafisa@gmail.com 
   license:
     name: GIS chapter 6 Salman
-    url:  https://pkg.go.dev/github.com/AkbarHasballah/BackEndGis
+    url: https://pkg.go.dev/github.com/AkbarHasballah/BackEndGis
   version: 1.0.11
 externalDocs:
-  description: RepositoRi Google Cloud Function
+  description: Repositori Google Cloud Function
   url: github.com/AkbarHasballah/BackEndGis
 servers:
   - url: https://asia-southeast2-bustling-walker-340203.cloudfunctions.net
@@ -74,7 +73,6 @@ paths:
         - token:
             - write:apiKey
             - read:apiKey
-
   /SIgnin:
     post:
       tags:
@@ -100,7 +98,7 @@ paths:
         - token:
           - write: apiKey
           - read: apiKey
-           /signup:
+  /signup:
     post:
       tags:
         - signup
@@ -201,14 +199,14 @@ paths:
 components:
   schemas:
     WebHook:
-          type: object
-          properties:
-            url: 
-              type: string
-              example: https://webhook.com
-            secret: 
-              type: string
-              example: isju8ekf9ke
+      type: object
+      properties:
+        url: 
+          type: string
+          example: https://webhook.com
+        secret: 
+          type: string
+          example: isju8ekf9ke
     UserAccount:
       type: object
       properties:
