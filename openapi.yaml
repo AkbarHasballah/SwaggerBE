@@ -100,8 +100,7 @@ paths:
         - token:
           - write: apiKey
           - read: apiKey
-  paths:
-  /signup:
+           /signup:
     post:
       tags:
         - signup
@@ -288,47 +287,6 @@ components:
             type: array
             items:
               $ref: '#/components/schemas/TextMessageResponse'
-  securitySchemes:
-    token:
-      type: apiKey
-      name: token
-      in: header
-    Auth:
-      type: object
-      properties:
-        username:
-          type: string
-          example: username
-        password:
-          type: string
-          example: password
-    AuthResponse:
-      type: object
-      properties:
-        status:
-          type: bool
-          example: false
-        message:
-          type: string
-          example: fehguy
-        token:
-          type: string
-          example: fehguy
-  requestBodies:
-    AuthReq:
-      description: Request Authentication
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Auth'
-    UserArray:
-      description: List of user object
-      content:
-        application/json:
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/AuthResponse'
   securitySchemes:
     token:
       type: apiKey
