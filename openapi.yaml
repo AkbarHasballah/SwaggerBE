@@ -199,6 +199,45 @@ paths:
             - read:apiKey
 components:
   schemas:
+ Auth:
+      type: object
+      properties:
+        username:
+          type: string
+          example: username
+        password:
+          type: string
+          example: password
+              type: string
+              AuthResponse:
+      type: object
+      properties:
+        status:
+          type: bool
+          example: false
+        message:
+          type: string
+          example: fehguy
+        token:
+          type: string
+          example: fehguy
+    requestBodies:
+    AuthReq:
+      description: Request Authentication
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Auth'
+    UserArray:
+      description: List of user object
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/AuthResponse'
+    securitySchemes:
+
     WebHook:
       type: object
       properties:
