@@ -72,8 +72,8 @@ paths:
           description: Invalid input
       security:
         - token:
-            - write:apiKey
-            - read:apiKey
+            - write: apiKey
+            - read: apiKey
   /SIgnin:
     post:
       tags:
@@ -122,8 +122,8 @@ paths:
           description: Invalid input
       security:
         - token:
-            - write:apiKey
-            - read:apiKey
+            - write: apiKey
+            - read: apiKey
   /device/{token}:
     get:
       tags:
@@ -153,7 +153,7 @@ paths:
         - message
       summary: Kirim pesan teks
       description: Mengirimkan pesan teks kepada perorangan atau group
-      operationId: sendMesageText
+      operationId: sendMessageText
       requestBody:
         content:
           application/json:
@@ -170,8 +170,8 @@ paths:
           description: Invalid input
       security:
         - token:
-            - write:apiKey
-            - read:apiKey
+            - write: apiKey
+            - read: apiKey
   /whatsauth/request:
     post:
       tags:
@@ -195,11 +195,11 @@ paths:
           description: Invalid input
       security:
         - token:
-            - write:apiKey
-            - read:apiKey
+            - write: apiKey
+            - read: apiKey
 components:
   schemas:
- Auth:
+    Auth:
       type: object
       properties:
         username:
@@ -208,8 +208,7 @@ components:
         password:
           type: string
           example: password
-              type: string
-              AuthResponse:
+    AuthResponse:
       type: object
       properties:
         status:
@@ -221,23 +220,6 @@ components:
         token:
           type: string
           example: fehguy
-    requestBodies:
-    AuthReq:
-      description: Request Authentication
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Auth'
-    UserArray:
-      description: List of user object
-      content:
-        application/json:
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/AuthResponse'
-    securitySchemes:
-
     WebHook:
       type: object
       properties:
