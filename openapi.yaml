@@ -293,25 +293,6 @@ components:
       type: apiKey
       name: token
       in: header
-components:
-  schemas:
-    Peta:
-      type: object
-      properties:
-        type:
-          type: string
-        geometry:
-          type: object
-          properties:
-            type: 
-              type: string
-            coordinates: 
-              type: array
-        properties:
-          type: object
-          properties:
-            name:
-              type: string
     Auth:
       type: object
       properties:
