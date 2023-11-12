@@ -17,6 +17,8 @@ servers:
   - url: https://us-central1-bustling-walker-340203.cloudfunctions.net/SIgnin
   - url: https://us-central1-bustling-walker-340203.cloudfunctions.net/function-GIS2
   - url: https://asia-southeast2-bustling-walker-340203.cloudfunctions.net/function-webhook
+  - url: https://us-central1-bustling-walker-340203.cloudfunctions.net/function-SIGNREGISGISCOY
+  - url: https://us-central1-bustling-walker-340203.cloudfunctions.net/function-GISSGINUPCOY
 tags:
   - name: data
     description: Data
