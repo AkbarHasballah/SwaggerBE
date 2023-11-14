@@ -95,5 +95,5 @@ components:
   securitySchemes:
     SECRET:
       type: apiKey
-      name: token
+      name: Authorization
       in: header
