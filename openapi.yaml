@@ -1,131 +1,59 @@
 openapi: 3.0.3
 info:
-  title: Dokumen API Web Informasi Wisata Bandung Oleh Backend Developer
-  description: 
-    Dokumentasi API Informasi Wisata Bandung (IWB) 
-  termsOfService: https://github.com/InformasiwisataBandung/swagger
+  title: DOKUMEN API GIS RAUL MAHYA - OpenAPI 3.0
+  description: >-
+    Jelaskan disini apa saja yang perlu dijelaskan
+    termasuk informasi yang diperlukan untuk dinilai
+    term of service isi dari link repo dari swagger ini
+  termsOfService: https://akbarhasballah.github.io/SwaggerBE
   contact:
-    email: salmanakbartafisa@gmail.com 
+    email: salmanakbartafisa@gmail.com
   license:
-    name: Informasi Wisata Bandung 
-    url:  https://pkg.go.dev/github.com/InformasiwisataBandung/BackendGO
+    name: Akbar Hasbullah GIS
+    url: 
   version: 1.0.11
 externalDocs:
-  description: Repositori Google Cloud Function !
-  url: github.com/InformasiwisataBandung/BackendGO
+  description: Repo GCF
+  url: 
 servers:
   - url: https://asia-southeast2-bustling-walker-340203.cloudfunctions.net
-  - url: https://us-central1-bustling-walker-340203.cloudfunctions.net/SIgnin
-  - url: https://us-central1-bustling-walker-340203.cloudfunctions.net/function-6CreateWisata
-  - url: https://us-central1-bustling-walker-340203.cloudfunctions.net/function-7ReadWisata
-  - url: https://us-central1-bustling-walker-340203.cloudfunctions.net/function-8UpdateWisata
-  - url: https://us-central1-bustling-walker-340203.cloudfunctions.net/function-9DeleteWisata
-  - url: https://asia-southeast2-bustling-walker-340203.cloudfunctions.net/function-PasetoGIS-2
 tags:
-  - name: data
-    description: Data
-    externalDocs:
-      description: Deskripsi Kode Program
-      url: https://petapedia.github.io/gcf/get/
-  - name: Tes Sign up (register)
-    description: Auth Access 
+  - name: Create GIS
+    description: Data Geo Spasial
     externalDocs:
       description: Deskripsi dan Kode Program
-      url: https://us-central1-bustling-walker-340203.cloudfunctions.net/SIgnin
-  - name: Tes Sign in
-    description: Mendapatkan Token
+      url: https://pkg.go.dev/github.com/AkbarHasballah/BEGISNEW
+  - name: auth
+    description: Auth to Access to API
+    externalDocs:
+      description: Deskripsi dan Kode Program
+      url: https://pkg.go.dev/github.com/AkbarHasballah/BEGISNEW
+  - name: user
+    description: Get Token and Authorize
 paths:
-  /7ReadWisata:
-    get:
+  /function-PasetoGIS-2:  # Penambahan endpoint Create GIS
+    post:
       tags:
-        - data
-      summary: Get Data TempatWisata
-      description: List Data Geospasial
-      operationId: getGeoJSON
+        - Create GIS
+      summary: Create GIS Data
+      description: Add new GIS data
+      operationId: createGIS
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Peta' # Gunakan skema yang sesuai di sini
       responses:
-        '200':
-          description: Successful Operation
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Peta'
+        '201':
+          description: Data successfully created
         '400':
-          description: Invalid status value
-  /function-Signup:
-    post:
-      tags:
-        - auth
-      summary: Signup
-      description: Signup and Get User Token
-      operationId: authService
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Auth'
-      responses:
-        '200':
-          description: Successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AuthResponse'
-        '405':
-          description: Invalid input
+          description: Invalid input or request body
       security:
-        - token:
+        - SECRET:
             - write:apiKey
-            - read:apiKey
-
-  /SIgnin:
-    post:
-      tags:
-        - user
-      summary: Login Mendapatkan Token
-      description: Login and Get User Token
-      operationId: authService
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Auth'
-      responses:
-        '200':
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AuthResponse'
-        '405':
-          description: Invalid input
-      security:
-        - token:
-          - write: apiKey
-          - read: apiKey
-  /function-9DeleteWisata:
-    delete:
-      tags:
-        - Wisata
-      summary: Menghapus Konten
-      description: Hapus konten sesuai dengan kebutuhan
-      operationId: authService
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Auth'
-      responses:
-        '200':
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AuthResponse'
-        '405':
-          description: Invalid input
-      security:
+            - read:SECRET
+               
 components:
   schemas:
     Peta:
@@ -133,56 +61,27 @@ components:
       properties:
         type:
           type: string
-        geometry:
-          type: object
-          properties:
-            type: 
-              type: string
-            coordinates: 
-              type: array
+          example: "Feature"
         properties:
           type: object
           properties:
             name:
               type: string
-    Auth:
-      type: object
-      properties:
-        username:
-          type: string
-          example: username
-        password:
-          type: string
-          example: password
-    AuthResponse:
-      type: object
-      properties:
-        status:
-          type: bool
-          example: false
-        message:
-          type: string
-          example: fehguy
-        token:
-          type: string
-          example: fehguy
-  requestBodies:
-    AuthReq:
-      description: Request Authentication
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Auth'
-    UserArray:
-      description: List of user object
-      content:
-        application/json:
-          schema:
-            type: array
-            items:
-              $ref: '#/components/schemas/AuthResponse'
+              example: "LOKASI"
+        geometry:
+          type: object
+          properties:
+            type:
+              type: string
+              example: "Point"
+            coordinates:
+              type: array
+              items:
+                - type: array
+                  items:
+                    - [125.6, 10.1]
   securitySchemes:
-    token:
+    SECRET:
       type: apiKey
-      name: token
+      name: SECRET
       in: header
