@@ -53,7 +53,7 @@ paths:
       security:
         - token:
             - write: apiKey
-            - read: token
+            - read: apikey
             - in : header
   /SIgnin:
     post:
