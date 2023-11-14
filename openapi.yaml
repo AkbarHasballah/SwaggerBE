@@ -50,7 +50,11 @@ paths:
           description: Data successfully created
         '400':
           description: Invalid input or request body
-     
+      security:
+        - SECRET:
+            - write: apiKey
+            - read: Authorization
+               
 components:
   schemas:
     Peta:
