@@ -53,33 +53,8 @@ paths:
       security:
         - token:
             - write: apiKey
-            - read: apikey
+            - read: Authorization
             - in : header
-  /SIgnin:
-    post:
-      tags:
-        - user
-      summary: Login Mendapatkan Token
-      description: Login and Get User Token
-      operationId: authService
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Auth'
-      responses:
-        '200':
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AuthResponse'
-        '405':
-          description: Invalid input
-      security:
-        - token:
-          - write: apiKey
-          - read: apiKey
                
 components:
   schemas:
@@ -117,30 +92,8 @@ components:
         - type
         - properties
         - geometry
-        Auth:
-      type: object
-      properties:
-        username:
-          type: string
-          example: username
-        password:
-          type: string
-          example: password
-    AuthResponse:
-      type: object
-      properties:
-        status:
-          type: bool
-          example: false
-        message:
-          type: string
-          example: fehguy
-        token:
-          type: string
-          example: fehguy
-  requestBodies:
   securitySchemes:
-    Authorization:
+    SECRET:
       type: apiKey
       name: Authorization
       in: header
