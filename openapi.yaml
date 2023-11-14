@@ -51,9 +51,10 @@ paths:
         '400':
           description: Invalid input or request body
       security:
-        - SECRET:
+        - token:
             - write: apiKey
             - read: token
+            - in : header
                
 components:
   schemas:
