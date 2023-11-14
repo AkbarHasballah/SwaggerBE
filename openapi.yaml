@@ -1,6 +1,6 @@
 openapi: 3.0.3
 info:
-  title: DOKUMEN API GIS RAUL MAHYA - OpenAPI 3.0
+  title: DOKUMEN TUGAS GIS PASETO Salman Akbar  - OpenAPI 3.0
   description: >-
     Jelaskan disini apa saja yang perlu dijelaskan
     termasuk informasi yang diperlukan untuk dinilai
@@ -58,28 +58,38 @@ components:
   schemas:
     Peta:
       type: object
-      properties:
-        type:
-          type: string
-          example: "Feature"
-        properties:
-          type: object
-          properties:
-            name:
-              type: string
-              example: "LOKASI"
-        geometry:
-          type: object
-          properties:
-            type:
-              type: string
-              example: "Point"
-            coordinates:
-              type: array
-              items:
-                - type: array
-                  items:
-                    - [125.6, 10.1]
+properties:
+  type:
+    type: string
+    enum: ["Feature"]
+  properties:
+    type: object
+    properties:
+      name:
+        type: string
+    required:
+      - name
+  geometry:
+    type: object
+    properties:
+      coordinates:
+        type: array
+        items:
+          type: array
+          items:
+            type: number
+        minItems: 2
+        maxItems: 2
+      type:
+        type: string
+        enum: ["Point"]
+    required:
+      - coordinates
+      - type
+required:
+  - type
+  - properties
+  - geometry
   securitySchemes:
     SECRET:
       type: apiKey
