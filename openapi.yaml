@@ -53,7 +53,7 @@ paths:
       security:
         - SECRET:
             - write: apiKey
-            - read: Authorization
+            - read: token
                
 components:
   schemas:
@@ -94,5 +94,5 @@ components:
   securitySchemes:
     SECRET:
       type: apiKey
-      name: Authorization
+      name: token
       in: header
