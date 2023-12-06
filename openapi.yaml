@@ -53,9 +53,40 @@ paths:
         - SECRET:
             - write: apiKey
             - read: token
+
+  /SIgnin-1Signin:
+    post:
+      tags:
+        - auth
+      summary: Login get Token
+      description: Login and Get User Token
+      operationId: authService
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Auth'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthResponse'
+        '405':
+          description: Invalid input
                
 components:
   schemas:
+    Auth:
+      type: object
+      properties:
+        username:
+          type: string
+          example: Salman
+        password:
+          type: string
+          example: 22211
     Peta:
       type: object
       properties:
